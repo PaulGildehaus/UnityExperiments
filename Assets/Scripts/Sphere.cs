@@ -9,12 +9,8 @@ public class Sphere : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        queue = new Queue<Vector3>();
-        queue.Enqueue(new Vector3(3f, .5f, 0f));
-        queue.Enqueue(new Vector3(0f, .5f, 3f));
-        queue.Enqueue(new Vector3(-3f, .5f, 0f));
-        queue.Enqueue(new Vector3(0f, .5f, -3f));
-        currentVector = new Vector3();
+        //iTween.MoveUpdate(this.gameObject, new Vector3(0f, 0.5f, 3f), 3f);
+        iTween.MoveBy(this.gameObject, iTween.Hash("x", 2, "time", 2.5f));
     }
 
 
@@ -29,6 +25,8 @@ public class Sphere : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
+
+        /*
         Vector3 currVec = queue.Peek();
         //print("Queue: " + currVec.ToString() + " | Position: " + currentVector.ToString());
         if (currentVector.Equals(currVec))
@@ -53,5 +51,6 @@ public class Sphere : MonoBehaviour {
             queue.Enqueue(currVec);
         }
         currentVector = transform.position;
-	}
+	*/
+    }
 }
