@@ -15,9 +15,8 @@ public class Sphere : MonoBehaviour {
         queue.Enqueue(new Vector3(0f, .5f, 3f));
         queue.Enqueue(new Vector3(-3f, .5f, 0f));
         queue.Enqueue(new Vector3(0f, .5f, -3f));
-
     }
-
+    
 
     void OnTriggerEnter(Collider col)
     {
@@ -30,18 +29,14 @@ public class Sphere : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        //iTween.MoveTo(gameObject, new Vector3(0f, .5f, 5f), 2f);
-
-        
         Vector3 currVec = queue.Peek();
-        print(currVec + "   |   " + currentVector);
         if (currentVector.Equals(currVec))
         {
             queue.Dequeue();
-            iTween.MoveTo(gameObject, currVec, 3f);
             queue.Enqueue(currVec);
+            currVec = queue.Peek();
+            iTween.MoveTo(gameObject, currVec, 1.5f);
         }
         currentVector = transform.position;
-        
     }
 }
